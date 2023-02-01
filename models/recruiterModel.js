@@ -4,12 +4,12 @@ const { Schema, model } = mongoose
 // recruiter_profile
 const Recruiter = new Schema(
   {
-    user_id:              { type : Number, required : true },
+    user_id:              { type : mongoose.Schema.Types.ObjectId, ref : 'User' },
     first_name:           { type : String, required : true },
     last_name:            { type : String, required : true },
     company_name:         { type : String, required : true }, // later one companyModel to many recuiter
     company_description:  { type : String, required : true },
-    recruiter_type:       { enum: ['in-house', 'head-hunter'], required : true }
+    recruiter_type:       { type : String, enum: ['in-house', 'head-hunter'], required : true }
   }
 )
 
