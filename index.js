@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({
-    extended : true
+  extended : true
 }))
 
 // connect to front app
@@ -15,13 +15,16 @@ require('./db/client')
 // use env variables
 require('dotenv').config()
 
+// serve favicon
+require('./middlewares/favicon')
+
 app.get('/', (req, res) => {
-    res.send('Welcome to this API')
+  res.send('Welcome to this API')
 })
 
 const userRouter = require('./routes/userRoute')
 app.use('/api', userRouter)
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server running on port ${process.env.PORT}`)
+  console.log(`Server running on port ${process.env.PORT}`)
 })
