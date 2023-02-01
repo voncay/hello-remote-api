@@ -16,14 +16,16 @@ require('./db/client')
 require('dotenv').config()
 
 // serve favicon
-require('./middlewares/favicon')
+// require('./middlewares/favicon')
 
 app.get('/', (req, res) => {
   res.send('Welcome to this API')
 })
 
 const userRouter = require('./routes/userRoute')
-app.use('/api', userRouter)
+const recruiterRouter = require('./routes/recruiterRoute')
+
+app.use('/api', userRouter, recruiterRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`)

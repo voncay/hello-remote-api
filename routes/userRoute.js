@@ -1,9 +1,9 @@
 const express = require('express')
 const userRouter = express.Router()
-const { getAllUsers, postUser, findUser, updateUser, deleteUser } = require('../controllers/userController')
+const { getUsers, postUser, findUser, updateUser, deleteUser } = require('../controllers/userController')
 
 userRouter.route('/users')
-  .get(getAllUsers)
+  .get(getUsers)
   .post(postUser)
 
 userRouter.route('/users/:id')

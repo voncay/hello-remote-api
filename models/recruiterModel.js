@@ -2,9 +2,13 @@ const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
 // recruiter_profile
-const Recruiter = new Schema(
+const RecruiterSchema = new Schema(
   {
-    user_id:              { type : mongoose.Schema.Types.ObjectId, ref : 'User' },
+    user_account:          { 
+                            type : mongoose.Schema.Types.ObjectId,
+                            ref : 'User',
+                            required: true
+                          },
     first_name:           { type : String, required : true },
     last_name:            { type : String, required : true },
     company_name:         { type : String, required : true }, // later one companyModel to many recuiter
@@ -13,4 +17,4 @@ const Recruiter = new Schema(
   }
 )
 
-module.exports = model('Recruiter', Recruiter)
+module.exports = model('Recruiter', RecruiterSchema)
