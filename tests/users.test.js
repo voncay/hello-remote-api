@@ -15,8 +15,8 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await mongoose.connection.close();
-  console.log('afterAll')
-  console.log(mongoose.connection.readyState);
+  // console.log('afterAll')
+  // console.log(mongoose.connection.readyState);
 });
 
 // basics examples

@@ -21,6 +21,15 @@ const postRecruiter = async (req, res) => {
   try{
     const newRecruiter = await Recruiter.create(req.body)
     res.status(201).json(newRecruiter)
+  } catch(err){
+    res.status(500).json({ error : err.message })
+  }
+}
+
+const findRecruiter = async (req, res) => {
+  try {
+    const foundRecruiter = await Recruiter.findById(req.params.id)
+    res.status(200).json(foundRecruiter)
   }
 
   catch(err){
@@ -28,40 +37,26 @@ const postRecruiter = async (req, res) => {
   }
 }
 
-// const findUser = async (req, res) => {
-//   try {
-//     const foundUser = await User.findById(req.params.id)
-//     res.status(200).json(foundUser)
-//   }
+const updateRecruiter = async (req, res) => {
+  try {
+    const updatedRecruiter = await Recruiter.findByIdAndUpdate(req.params.id, req.body)
+    res.status(200).json(updatedRecruiter)
+  } catch(err){
+    res.status(500).json({ error : err.message })
+  }
+}
 
-//   catch(err){
-//     res.status(500).json({ error : err.message })
-//   }
-// }
+const deleteRecruiter = (req, res) => {
+  try {
+    // console.log(req, "req deleteRecruiter")
+    Recruiter
+    .deleteOne({ _id: req.params.id })
+    .then(() => res.json('Recruiter deleted sucessfully'))
+  }
 
-// const updateUser = async (req, res) => {
-//   try {
-//     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body) // update = the object updated
-//     res.status(200).json(updatedUser)
-//   }
+  catch(err){
+    res.status(500).json({ error : err.message })
+  }
+}
 
-//   catch(err){
-//     res.status(500).json({ error : err.message })
-//   }
-// }
-
-// const deleteUser = (req, res) => {
-//   try {
-//     User
-//     .deleteOne({ _id: req.params.id })
-//     .then(() => res.json('User deleted sucessfully'))
-//   }
-
-//   catch(err){
-//     res.status(500).json({ error : err.message })
-//   }
-// }
-
-module.exports = { getRecruiters, postRecruiter }
-
-// module.exports = { getRecruiters, postRecruiter, findRecruiter, updateRecruiter, deleteRecruiter }
+module.exports = { getRecruiters, postRecruiter, findRecruiter, updateRecruiter, deleteRecruiter }
