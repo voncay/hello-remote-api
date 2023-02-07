@@ -22,10 +22,14 @@ app.get('/', (req, res) => {
   res.send('Welcome to this API')
 })
 
+
+const authRouter = require('./routes/authRouter')
 const userRouter = require('./routes/userRoute')
 const recruiterRouter = require('./routes/recruiterRoute')
 
+app.use('/auth', authRouter )
 app.use('/api', userRouter, recruiterRouter)
+
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`)

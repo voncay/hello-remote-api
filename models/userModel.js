@@ -5,9 +5,18 @@ const { Schema, model } = mongoose
 const User = new Schema(
   {
     // _id:        { type: Schema.Types.ObjectId },  // test
-    email:      { type: String, required : true, unique: true },
-    password:   { type: String, required : true },
-    user_type:  {
+    email: {
+      type: String,
+      required : true,
+      unique: true,
+      minLength: 6
+    },
+    password: {
+      type: String,
+      required: true,
+      minLength: 8
+    },
+    user_type: {
       type: String,
       required : true,
       enum: {
@@ -15,7 +24,7 @@ const User = new Schema(
         message: '{VALUE} is not supported'
       }
     }
-  }, 
+  },
   { timestamps: true }
 )
 
