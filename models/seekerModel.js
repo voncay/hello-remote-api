@@ -7,7 +7,7 @@ const Seeker = new Schema(
     user_account:       { type : Number, required : true },
     first_name:         { type : String, required : true },
     last_name:          { type : String, required : true },
-    current_salary:     { type : Number, required : true },
+    current_salary:     { type : Number },
     education_detail:   [{ type : mongoose.Schema.Types.ObjectId, ref : 'Education' }],
     experience_detail:  [{ type : mongoose.Schema.Types.ObjectId, ref : 'Experience' }],
     skill_set:          [{ type : String }]

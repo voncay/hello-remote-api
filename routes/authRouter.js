@@ -23,7 +23,7 @@ authRouter.post('/register', async (req, res ) => {
     })
 
     user.save()
-    res.send(`Welcome ${user.email}`)
+    res.send(user)
 })
 
 authRouter.post('/login', async (req, res) => {

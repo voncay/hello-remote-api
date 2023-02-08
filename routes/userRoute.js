@@ -22,6 +22,15 @@ userRouter.route('/users/:id')
 //     }
 // })
 
+// userRouter.route('/user').get(verify, async (req, res) => {
+//     try{
+//         res.json(req.user)
+//     } catch(err){
+//         res.json(err)
+//     }
+//   }
+// )
+
 userRouter.route('/user')
   .get(verify, findVerifiedUser)
 
