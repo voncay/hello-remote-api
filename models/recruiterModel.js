@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
 // recruiter_profile
-const RecruiterSchema = new Schema(
+const Recruiter = new Schema(
   {
     user_account:     {
                         type : mongoose.Schema.Types.ObjectId,
@@ -11,17 +11,17 @@ const RecruiterSchema = new Schema(
                       },
     first_name:       { type : String, required : true },
     last_name:        { type : String, required : true },
+    recruiter_type:   {
+                        type : String,
+                        required : true,
+                        enum: ['in-house', 'head-hunter']
+                      },
     related_company:  {
                         type : mongoose.Schema.Types.ObjectId,  // does it exist or fill the form
                         ref : 'Company',
-                        required: true
-                      },
-    recruiter_type:   {
-                        type : String,
-                        enum: ['in-house', 'head-hunter'],
                         required : true
                       }
   }
 )
 
-module.exports = model('Recruiter', RecruiterSchema)
+module.exports = model('Recruiter', Recruiter)

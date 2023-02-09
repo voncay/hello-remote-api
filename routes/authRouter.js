@@ -36,6 +36,8 @@ authRouter.post('/login', async (req, res) => {
     const validPass = await bcrypt.compare(req.body.password, user.password)
     if(!validPass) return res.status(400).send('Password is not valid, please try again')
 
+    // console.log(res.data, "res.data from auth login")
+
     const token = jwt.sign({user}, process.env.SECRET) // other options is expiration
     res.header('auth-token', token)
     res.json(token)
