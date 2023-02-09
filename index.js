@@ -25,10 +25,11 @@ app.get('/', (req, res) => {
 
 const authRouter = require('./routes/authRouter')
 const userRouter = require('./routes/userRoute')
+const seekerRouter = require('./routes/seekerRoute')
 const recruiterRouter = require('./routes/recruiterRoute')
 
 app.use('/auth', authRouter )
-app.use('/api', userRouter, recruiterRouter)
+app.use('/api', userRouter, seekerRouter, recruiterRouter)
 
 
 app.listen(process.env.PORT, () => {
