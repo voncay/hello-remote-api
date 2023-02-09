@@ -15,9 +15,6 @@ require('./db/client')
 // use env variables
 require('dotenv').config()
 
-// serve favicon
-// require('./middlewares/favicon')
-
 app.get('/', (req, res) => {
   res.send('Welcome to this API')
 })
