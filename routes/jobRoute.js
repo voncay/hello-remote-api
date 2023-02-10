@@ -5,7 +5,7 @@ const jobRouter = require('express').Router()
 
 const Job = require('../models/jobModel')
 
-jobRouter.post('/postjob', async (req, res ) => {
+jobRouter.post('/jobs', async (req, res ) => {
   try{
     const newJob = await Job.create(req.body)
     res.status(201).json(newJob)
