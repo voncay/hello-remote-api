@@ -16,11 +16,13 @@ const Recruiter = new Schema(
                         required : true,
                         enum: ['in-house', 'head-hunter']
                       },
-    related_company:  {
-                        type : mongoose.Schema.Types.ObjectId,  // does it exist or fill the form
-                        ref : 'Company',
-                        required : true
-                      }
+    company_name:         { type : String, required: true },
+    company_description:  { type : String, required: true }
+    // related_company:  {
+    //                     type : mongoose.Schema.Types.ObjectId,  // does it exist or fill the form
+    //                     ref : 'Company',
+    //                     required : true
+    //                   }
   }
 )
 

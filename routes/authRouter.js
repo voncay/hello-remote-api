@@ -38,9 +38,10 @@ authRouter.post('/login', async (req, res) => {
 
     // console.log(res.data, "res.data from auth login")
 
+
     const token = jwt.sign({user}, process.env.SECRET) // other options is expiration
     res.header('auth-token', token)
-    res.json(token)
+    res.json({"token":token, "type": user.user_type})
 })
 
 module.exports = authRouter
