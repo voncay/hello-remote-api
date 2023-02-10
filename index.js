@@ -24,9 +24,11 @@ const authRouter = require('./routes/authRouter')
 const userRouter = require('./routes/userRoute')
 const seekerRouter = require('./routes/seekerRoute')
 const recruiterRouter = require('./routes/recruiterRoute')
+const jobRouter = require('./routes/jobRoute')
+const companyRouter = require('./routes/companyRoute')
 
 app.use('/auth', authRouter )
-app.use('/api', userRouter, seekerRouter, recruiterRouter)
+app.use('/api', userRouter, seekerRouter, recruiterRouter, jobRouter, companyRouter)
 
 
 app.listen(process.env.PORT || "8080", () => {

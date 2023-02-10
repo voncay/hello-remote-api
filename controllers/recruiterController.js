@@ -7,6 +7,7 @@ const getRecruiters = async (req, res) => {
     Recruiter
     .find()
     .populate('user_account')
+    .populate('related_company')
     res.status(200).json(recruiters)
   } catch(err){
     console.log(err, "err");

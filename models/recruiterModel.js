@@ -4,11 +4,6 @@ const { Schema, model } = mongoose
 // recruiter_profile
 const Recruiter = new Schema(
   {
-    user_account:     {
-                        type : mongoose.Schema.Types.ObjectId,
-                        ref : 'User',
-                        required: true
-                      },
     first_name:       { type : String, required : true },
     last_name:        { type : String, required : true },
     recruiter_type:   {
@@ -16,13 +11,16 @@ const Recruiter = new Schema(
                         required : true,
                         enum: ['in-house', 'head-hunter']
                       },
-    company_name:         { type : String, required: true },
-    company_description:  { type : String, required: true }
-    // related_company:  {
-    //                     type : mongoose.Schema.Types.ObjectId,  // does it exist or fill the form
-    //                     ref : 'Company',
-    //                     required : true
-    //                   }
+    user_account:     {
+                        type : mongoose.Schema.Types.ObjectId,
+                        ref : 'User',
+                        required: true
+                      },
+    related_company:  {
+                        type : mongoose.Schema.Types.ObjectId,  // does it exist or fill the form
+                        ref : 'Company',
+                        required : true
+                      }
   }
 )
 
