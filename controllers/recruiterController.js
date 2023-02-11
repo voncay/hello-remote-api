@@ -27,6 +27,7 @@ const postRecruiter = async (req, res) => {
   }
 }
 
+// by id 
 const findRecruiter = async (req, res) => {
   try {
     const foundRecruiter = await Recruiter.findById(req.params.id)
@@ -35,6 +36,22 @@ const findRecruiter = async (req, res) => {
 
   catch(err){
     res.status(500).json({ error : err.message })
+  }
+}
+
+// by token
+const findVerifiedRecruiter = async (req, res) => {
+  try{
+
+    const user = req.user
+    // console.log(user, "user from findVerifiedRecruiter")
+    // const foundRecruiter = await Recruiter.findOne({ 'user_account._id': user._id })
+    const foundRecruiter = await Recruiter.findOne({ 'user_account': user })
+
+    res.status(200).json(foundRecruiter)
+    // res.json(req.user)
+  } catch(err){
+    res.json(err)
   }
 }
 
@@ -60,4 +77,4 @@ const deleteRecruiter = (req, res) => {
   }
 }
 
-module.exports = { getRecruiters, postRecruiter, findRecruiter, updateRecruiter, deleteRecruiter }
+module.exports = { getRecruiters, postRecruiter, findRecruiter, findVerifiedRecruiter, updateRecruiter, deleteRecruiter }

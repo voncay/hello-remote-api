@@ -1,8 +1,9 @@
 const express = require('express')
 const userRouter = express.Router()
+const verify = require('../middlewares/verify')
+
 // const { getUsers, postUser, findUser, findVerifiedUser, updateUser, deleteUser } = require('../controllers/userController')
 const { getUsers, findUser, findVerifiedUser, updateUser, deleteUser } = require('../controllers/userController')
-const verify = require('../middlewares/verify')
 
 userRouter.route('/users')
   .get(getUsers)
